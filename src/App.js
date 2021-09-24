@@ -1,8 +1,11 @@
+import GameboardCell from "./Components/GameboardCell";
 import useGameboard from "./Hooks/useGameboard/useGameboard";
 
 function App() {
   const { grid, placeShip, isPlacementLegal, ships, placeHit, isGameOver } =
     useGameboard(5);
+
+  console.log(grid);
 
   return (
     <div className="App">
@@ -16,6 +19,8 @@ function App() {
       <p>{JSON.stringify(ships)}</p>
       <br />
       <p>Gameover: {isGameOver ? "yes" : "no"}</p>
+      <br></br>
+      <GameboardCell cell={grid[0][0]} />
     </div>
   );
 }

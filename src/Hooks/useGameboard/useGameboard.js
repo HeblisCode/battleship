@@ -10,6 +10,8 @@ export default function useGameboard(size) {
   useEffect(() => {
     if (ships.length > 0 && ships.every((ship) => ship.isSunk())) {
       setIsGameOver(true);
+    } else {
+      setIsGameOver(false);
     }
   }, [ships]);
 
