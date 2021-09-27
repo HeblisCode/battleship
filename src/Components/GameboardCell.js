@@ -2,11 +2,10 @@ import { useEffect, useState } from "react";
 import { colorPalette } from "../Assets/colorPalette";
 import styled from "styled-components";
 
-export default function GameboardCell({ cell }) {
+export default function GameboardCell({ cell, clickHandler }) {
   const [cellColor, setCellColor] = useState(colorPalette.white);
 
   useEffect(() => {
-    console.log(cell.isHit);
     if (cell.isHit && cell.isShipHit) {
       setCellColor(colorPalette.green);
     } else if (cell.isHit) {
@@ -14,11 +13,14 @@ export default function GameboardCell({ cell }) {
     }
   }, [cell]);
 
-  return <StyledGameboardCell cellColor={cellColor}></StyledGameboardCell>;
+  return (
+    <StyledGameboardCell
+      cellColor={cellColor}
+      onClick={clickHandler}
+    ></StyledGameboardCell>
+  );
 }
 
 const StyledGameboardCell = styled.div`
-  aspect-ratio: 1;
-  height: 4rem;
   background-color: ${({ cellColor }) => cellColor};
 `;
